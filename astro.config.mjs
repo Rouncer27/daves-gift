@@ -17,6 +17,6 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   image: {
     domains: ["daves.swbdatabases3.ca/"],
-    remotePatterns: [{ protocol: "http" }],
+    remotePatterns: [{ protocol: "https" }],
   },
 });
