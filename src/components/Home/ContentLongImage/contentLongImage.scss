@@ -1,0 +1,57 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.content-long {
+  &-wrapper {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  &-image {
+    width: calc(50% - 0.75rem);
+    margin-left: 0.75rem;
+  }
+
+  &-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 0.75rem);
+    margin-right: 0.75rem;
+
+    &-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      margin-bottom: 0.75rem;
+      padding: 7.5rem;
+      background-color: $primaryColor;
+
+      p {
+        @extend .hl-five;
+        color: $whiteColor;
+      }
+    }
+
+    &-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      margin-top: 0.75rem;
+      padding: 7.5rem;
+      background-color: #f2eddf;
+
+      p {
+        @extend .hl-four;
+        color: $primaryColor;
+      }
+    }
+  }
+}

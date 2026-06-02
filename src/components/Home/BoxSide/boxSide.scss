@@ -4,6 +4,12 @@
 
 .box-side {
   margin-bottom: 1.5rem;
+
+  &-wrapper {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+  }
+
   &-image {
     width: calc(50% - 0.75rem);
     margin-right: 0.75rem;

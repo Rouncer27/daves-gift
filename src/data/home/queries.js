@@ -110,3 +110,29 @@ export const Box_Side_Query = `
         }
     }
 `;
+
+export const Content_Long_Image_Query = `
+     contentLongImage: contentLongImageComponent {
+        topContent
+        bottomContent
+        buttonText
+        buttonLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+        image {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+            
+        }
+    }
+`;
