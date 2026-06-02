@@ -1,51 +1,41 @@
 ---
-import Headline from "../components/common/shared/Headline.astro";
-import Paragraph from "../components/common/shared/Paragraph.astro";
-import Button from "../components/common/shared/Button.astro";
-import Wrapper from "../components/common/shared/Wrapper.astro";
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Home/Hero/Hero.astro";
+
+import { Page_Seo_Query } from "../data/page/queries";
+import { Hero_Query } from "../data/home/queries";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+		  query homePageQuery {
+		    page(id: "/", idType: URI) {
+          ${Page_Seo_Query}
+            homeTemplate {
+              ${Hero_Query}
+            }
+          }
+        }
+	  `,
+  }),
+});
+
+const {
+  data: {
+    page: { seoMetaTags, homeTemplate },
+  },
+} = await response.json();
 ---
 
-<Layout>
-  <h1>Home Page Dave's Template</h1>
-  <Wrapper>
-    <Headline hlstyle="one"
-      >Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris
-      sit amet orci. Aenean dignissim pellentesque felis.</Headline
-    >
-    <Headline hlstyle="two"
-      >Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris
-      sit amet orci. Aenean dignissim pellentesque felis.</Headline
-    >
-    <Headline hlstyle="three"
-      >Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris
-      sit amet orci. Aenean dignissim pellentesque felis.</Headline
-    >
-    <Headline hlstyle="four"
-      >Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris
-      sit amet orci. Aenean dignissim pellentesque felis.</Headline
-    >
-    <Headline hlstyle="five"
-      >Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris
-      sit amet orci. Aenean dignissim pellentesque felis.</Headline
-    >
-    <Paragraph pstyle="one"
-      >Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae
-      luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing,
-      commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit
-      tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices
-      sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl.
-      Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</Paragraph
-    >
-    <Paragraph pstyle="two"
-      >Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae
-      luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing,
-      commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit
-      tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices
-      sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl.
-      Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</Paragraph
-    >
-    <Button>Community Events</Button>
-    <Button>Community Events</Button>
-  </Wrapper>
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+  isHome={true}
+>
+  <Hero data={homeTemplate.hero} />
 </Layout>

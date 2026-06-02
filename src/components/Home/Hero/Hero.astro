@@ -1,0 +1,46 @@
+---
+import "./hero.scss";
+import { Image } from "astro:assets";
+
+const { image, title } = Astro.props.data;
+
+const heroImageSrc = image?.node?.sourceUrl;
+const heroAlt = image?.node?.altText || "";
+
+import heroMountain from "../../../assets/hero-path.png";
+---
+
+<div class="hero">
+  <div class="hero-background">
+    <Image
+      src={heroImageSrc}
+      alt={heroAlt}
+      format="webp"
+      widths={[800, 1200, 1600, 2000]}
+      sizes="100vw"
+      loading="eager"
+      inferSize={true}
+      class="hero-background-img"
+    />
+  </div>
+  <div class="hero-graphic">
+    <img src={heroMountain.src} alt={"Green path"} />
+  </div>
+  <div class="hero-title">
+    <h1 set:html={title} />
+  </div>
+  <div class="hero-color"></div>
+  <div class="hero-fade"></div>
+</div>
+
+<script>
+  // @ts-nocheck
+  import { gsap } from "gsap";
+  const image = document.querySelectorAll(".hero-background img");
+  const tl = gsap.timeline();
+  tl.add("start").from(
+    image,
+    { filter: "blur(100px)", duration: 2.2 },
+    "start",
+  );
+</script>
