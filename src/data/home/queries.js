@@ -30,3 +30,29 @@ export const Intro_Query = `
         }
     }
 `;
+
+export const Image_Links_Query = `
+     imageLinks: imageLinksComponent {
+        title
+        links {
+            title
+            link {
+                edges {
+                    node {
+                        uri
+                    }
+                }
+            }
+            image {
+                node {
+                    sourceUrl
+                    altText
+                    mediaDetails {
+                        width
+                        height
+                    }
+                }
+            }
+        }
+    }
+`;

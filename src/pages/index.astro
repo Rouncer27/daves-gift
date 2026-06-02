@@ -2,9 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Home/Hero/Hero.astro";
 import Intro from "../components/Home/Intro/Intro.astro";
+import ImageLinks from "../components/Home/ImageLinks/ImageLinks.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query, Intro_Query } from "../data/home/queries";
+import {
+  Hero_Query,
+  Intro_Query,
+  Image_Links_Query,
+} from "../data/home/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -19,6 +24,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
             homeTemplate {
               ${Hero_Query}
               ${Intro_Query}
+              ${Image_Links_Query}
             }
           }
         }
@@ -41,4 +47,5 @@ const {
 >
   <Hero data={homeTemplate.hero} />
   <Intro data={homeTemplate.intro} />
+  <ImageLinks data={homeTemplate.imageLinks} />
 </Layout>
