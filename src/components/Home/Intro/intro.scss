@@ -19,6 +19,14 @@
     width: calc(40%);
     margin-top: -10rem;
 
+    &-heart {
+      position: absolute;
+      top: 0;
+      right: 12rem;
+      width: 15rem;
+      z-index: 1000;
+    }
+
     &-mask {
       position: absolute;
       top: 0;

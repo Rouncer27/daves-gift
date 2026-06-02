@@ -8,6 +8,7 @@ const imageSrc = image?.node?.sourceUrl;
 const imageAlt = image?.node?.altText || "";
 
 import mask from "../../../assets/half-circle-cut.png";
+import heart from "../../../assets/heart-icon.png";
 ---
 
 <div class="home-intro">
@@ -23,6 +24,9 @@ import mask from "../../../assets/half-circle-cut.png";
         inferSize={true}
         class=""
       />
+      <div class="home-intro-image-heart">
+        <img src={heart.src} alt={"Heart Icon"} />
+      </div>
       <div class="home-intro-image-mask">
         <img src={mask.src} alt={"Green mask"} />
       </div>
