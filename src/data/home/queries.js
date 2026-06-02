@@ -85,3 +85,28 @@ export const Upcoming_Events_Query = `
         }
     }
 `;
+
+export const Box_Side_Query = `
+     boxSide: boxSideBySideComponent {
+        content
+        buttonText
+        buttonLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+        image {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+            
+        }
+    }
+`;

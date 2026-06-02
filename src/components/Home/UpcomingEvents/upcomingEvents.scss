@@ -3,6 +3,7 @@
 @use "../../../styles/global/paragraphs";
 
 .upcoming-events {
+  padding: 7.5rem 0 0;
   background-color: #f2eddf;
 
   &-content {
@@ -18,7 +19,8 @@
 
       h2 {
         @extend .hl-three;
-        color: $primaryColor;
+        color: $secondaryColor;
+        text-transform: uppercase;
         font-weight: 500;
       }
     }

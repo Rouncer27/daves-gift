@@ -4,6 +4,7 @@ import Hero from "../components/Home/Hero/Hero.astro";
 import Intro from "../components/Home/Intro/Intro.astro";
 import ImageLinks from "../components/Home/ImageLinks/ImageLinks.astro";
 import UpcomingEvents from "../components/Home/UpcomingEvents/UpcomingEvents.astro";
+import BoxSide from "../components/Home/BoxSide/BoxSide.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import {
@@ -11,6 +12,7 @@ import {
   Intro_Query,
   Image_Links_Query,
   Upcoming_Events_Query,
+  Box_Side_Query,
 } from "../data/home/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -28,6 +30,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
               ${Intro_Query}
               ${Image_Links_Query}
               ${Upcoming_Events_Query}
+              ${Box_Side_Query}
             }
           }
         }
@@ -52,4 +55,5 @@ const {
   <Intro data={homeTemplate.intro} />
   <ImageLinks data={homeTemplate.imageLinks} />
   <UpcomingEvents data={homeTemplate.upcomingEvents} />
+  <BoxSide data={homeTemplate.boxSide} />
 </Layout>

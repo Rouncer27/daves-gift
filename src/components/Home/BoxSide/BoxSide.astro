@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import "./boxSide.scss";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import Button from "../../common/shared/Button.astro";
+
+const { content, buttonText, buttonLink, image } = Astro.props.data;
+
+const imageSrc = image?.node?.sourceUrl;
+const imageAlt = image?.node?.altText || "";
+---
+
+<div class="box-side">
+  <Wrapper>
+    <div class="box-side-image">
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+    <div class="box-side-content">
+      <div class="box-side-content-inner">
+        <div set:html={content} />
+        <div>
+          <Button ele="a" href={buttonLink.edges[0].node.uri}
+            >{buttonText}</Button
+          >
+        </div>
+      </div>
+    </div>
+  </Wrapper>
+</div>
