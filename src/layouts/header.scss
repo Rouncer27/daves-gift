@@ -14,11 +14,27 @@
 
   &-wrapper {
     position: relative;
-    margin-top: 3.3rem !important;
-    margin-bottom: 3.3rem !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 3.3rem !important;
+    padding-bottom: 3.3rem !important;
     z-index: 100;
+  }
+
+  &-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 16rem;
+    background-image: linear-gradient(
+      to bottom,
+      $primaryColor,
+      $primaryColor 50%,
+      rgba(96, 128, 88, 0)
+    );
+    opacity: 0.8;
+    z-index: 10;
   }
 
   &-logo {
