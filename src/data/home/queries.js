@@ -56,3 +56,32 @@ export const Image_Links_Query = `
         }
     }
 `;
+
+export const Upcoming_Events_Query = `
+     upcomingEvents: upcomingEventsComponent {
+        title
+         event {
+            edges {
+                node {
+                    ... on Event {
+                        title
+                        slug
+                        eventAcf {
+                            excerpt
+                            featuredImage {
+                                node {
+                                    sourceUrl
+                                    altText
+                                    mediaDetails {
+                                        width
+                                        height
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;

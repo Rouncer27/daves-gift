@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./upcomingEvents.scss";
+import Button from "../../common/shared/Button.astro";
+
+const { title, event } = Astro.props.data;
+
+const imageSrc = event.edges[0].node.eventAcf.featuredImage?.node?.sourceUrl;
+const imageAlt =
+  event.edges[0].node.eventAcf.featuredImage?.node?.altText || "";
+
+import mask from "../../../assets/half-circle-cut-beige.png";
+---
+
+<div class="upcoming-events">
+  <Wrapper>
+    <div class="upcoming-events-content">
+      <div class="upcoming-events-content-inner">
+        <div class="upcoming-events-content-title">
+          <h2>{title}</h2>
+        </div>
+        <div class="upcoming-events-content-event">
+          <div class="upcoming-events-content-event-title">
+            <h3>{event.edges[0].node.title}</h3>
+          </div>
+          <div
+            class="upcoming-events-content-event-excerpt"
+            set:html={event.edges[0].node.eventAcf.excerpt}
+          />
+          <div>
+            <Button
+              ele="a"
+              btnstyle="one"
+              href={`events/${event.edges[0].node.slug}`}>Read More</Button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="upcoming-events-image">
+      <div class="upcoming-events-image-mask">
+        <img src={mask.src} alt={"Beige mask"} />
+      </div>
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+  </Wrapper>
+</div>
