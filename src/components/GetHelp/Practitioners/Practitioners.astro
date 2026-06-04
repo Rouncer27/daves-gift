@@ -1,0 +1,41 @@
+---
+// @ts-ignore
+// @ts-nocheck
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./practitioners.scss";
+const { title, practitioners } = Astro.props.data;
+---
+
+<div class="practitioners">
+  <Wrapper classes="practitioners">
+    <div class="practitioners-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="practitioners-headshots">
+      {
+        practitioners.map((pract) => {
+          return (
+            <div class="practitioners-headshot">
+              <div>
+                <h3>{pract.name}</h3>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="practitioners-bios">
+      {
+        practitioners.map((pract) => {
+          return (
+            <div class="practitioners-bio">
+              <div>
+                <div set:html={pract.bio} />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </Wrapper>
+</div>

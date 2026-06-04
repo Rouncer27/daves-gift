@@ -2,9 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/GetHelp/Hero/Hero.astro";
 import How from "../components/GetHelp/How/How.astro";
+import Practitioners from "../components/GetHelp/Practitioners/Practitioners.astro";
+import BoxSide from "../components/GetHelp/BoxSide/BoxSide.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query, How_Query } from "../data/help/queries";
+import {
+  Hero_Query,
+  How_Query,
+  Practitioners_Query,
+  Box_Side_Query,
+} from "../data/help/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -25,6 +32,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                         helpTemplate {
                             ${Hero_Query}
                             ${How_Query}
+                            ${Practitioners_Query}
+                            ${Box_Side_Query}
                         }
                     }
                 }
@@ -53,4 +62,6 @@ const {
 >
   <Hero data={helpTemplate.hero} />
   <How data={helpTemplate.how} />
+  <Practitioners data={helpTemplate.practitioners} />
+  <BoxSide data={helpTemplate.boxSide} />
 </Layout>
