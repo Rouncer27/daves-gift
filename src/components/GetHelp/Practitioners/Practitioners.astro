@@ -14,7 +14,7 @@ const { title, practitioners } = Astro.props.data;
     </div>
     <div class="practitioners-headshots">
       {
-        practitioners.map((pract) => {
+        practitioners.map((pract, index) => {
           const imageSrc = pract.image?.node?.sourceUrl;
           const imageAlt = pract.image?.node?.altText || "";
 
@@ -34,7 +34,13 @@ const { title, practitioners } = Astro.props.data;
               <div>
                 <h3>{pract.name}</h3>
                 <p>
-                  <button type="button">click to Read</button>
+                  <button
+                    class="practitioners-headshot-button"
+                    data-index={index}
+                    type="button"
+                  >
+                    click to Read
+                  </button>
                 </p>
               </div>
             </div>
@@ -44,10 +50,26 @@ const { title, practitioners } = Astro.props.data;
     </div>
     <div class="practitioners-bios">
       {
-        practitioners.map((pract) => {
+        practitioners.map((pract, index) => {
+          const imageSrc = pract.image?.node?.sourceUrl;
+          const imageAlt = pract.image?.node?.altText || "";
           return (
-            <div class="practitioners-bio">
-              <div>
+            <div
+              class={`practitioners-bio${index === 0 ? " active" : ""}`}
+              data-index={index}
+            >
+              <div class="practitioners-bio-image">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                />
+              </div>
+              <div class="practitioners-bio-content">
                 <div set:html={pract.bio} />
               </div>
             </div>
@@ -57,3 +79,29 @@ const { title, practitioners } = Astro.props.data;
     </div>
   </Wrapper>
 </div>
+
+<script>
+  // Find all headshot buttons and all bio elements
+  const buttons = document.querySelectorAll(".practitioners-headshot-button");
+  const bios = document.querySelectorAll(".practitioners-bio");
+
+  console.log(buttons);
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Get the target index from the button's data attribute
+      const targetIndex = button.getAttribute("data-index");
+
+      // Remove 'active' class from all bios to hide them
+      bios.forEach((bio) => bio.classList.remove("active"));
+
+      // Find the specific bio with the matching index and show it
+      const targetBio = document.querySelector(
+        `.practitioners-bio[data-index="${targetIndex}"]`,
+      );
+      if (targetBio) {
+        targetBio.classList.add("active");
+      }
+    });
+  });
+</script>

@@ -65,7 +65,7 @@ const baseUrl = Astro.url ? Astro.url : baseData.url;
   <body>
     <Header isHome={isHome} />
     <slot />
-    <CookieConsent client:only="react" />
+    <!-- <CookieConsent client:only="react" /> -->
     <Footer />
   </body>
 </html>
