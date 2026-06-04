@@ -83,6 +83,10 @@ switch (true) {
     TemplateComponent = (await import("../templates/PrivacyTemplate.astro"))
       .default;
     break;
+  case templateName.includes("help"):
+    TemplateComponent = (await import("../templates/HelpTemplate.astro"))
+      .default;
+    break;
   default:
     TemplateComponent = (await import("../templates/DefaultTemplate.astro"))
       .default;
