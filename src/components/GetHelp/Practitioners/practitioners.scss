@@ -58,6 +58,18 @@
     &-image {
       width: calc(20% - 2.5rem);
       margin-right: 2.5rem;
+
+      &-title {
+        h3 {
+          @extend .p-one;
+          color: #707070;
+        }
+
+        a {
+          @extend .p-two;
+          font-weight: 500;
+        }
+      }
     }
 
     &-content {
