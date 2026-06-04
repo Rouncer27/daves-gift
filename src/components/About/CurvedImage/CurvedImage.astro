@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./curvedImage.scss";
+
+const { content, image } = Astro.props.data;
+
+const imageSrc = image?.node?.sourceUrl;
+const imageAlt = image?.node?.altText || "";
+
+import mask from "../../../assets/half-circle-cut-beige.png";
+---
+
+<div class="curved-image">
+  <Wrapper>
+    <div class="curved-image-content">
+      <div class="curved-image-content-inner">
+        <div class="curved-image-content-event">
+          <div class="curved-image-content-event-excerpt" set:html={content} />
+        </div>
+      </div>
+    </div>
+    <div class="curved-image-image">
+      <div class="curved-image-image-mask">
+        <img src={mask.src} alt={"Beige mask"} />
+      </div>
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+  </Wrapper>
+</div>

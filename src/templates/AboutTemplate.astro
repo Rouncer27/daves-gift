@@ -1,9 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/About/Hero/Hero.astro";
+import MainContent from "../components/About/MainContent/MainContent.astro";
+import CurvedImage from "../components/About/CurvedImage/CurvedImage.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/about/queries";
+import {
+  Hero_Query,
+  Main_Content_Query,
+  Curved_Image_Query,
+} from "../data/about/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,6 +29,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         aboutTemplate {
                             ${Hero_Query}
+                            ${Main_Content_Query}
+                            ${Curved_Image_Query}
                         }
                     }
                 }
@@ -50,4 +58,6 @@ const {
   isHome={true}
 >
   <Hero data={aboutTemplate.hero} />
+  <MainContent data={aboutTemplate.mainContent} />
+  <CurvedImage data={aboutTemplate.curvedImage} />
 </Layout>
