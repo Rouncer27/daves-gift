@@ -9,9 +9,10 @@
     width: 100%;
 
     h2 {
-      @extend .hl-two;
+      @extend .hl-three;
       color: $secondaryColor;
       text-align: center;
+      font-weight: 500;
     }
   }
 
