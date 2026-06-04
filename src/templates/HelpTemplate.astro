@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/GetHelp/Hero/Hero.astro";
+import How from "../components/GetHelp/How/How.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/help/queries";
+import { Hero_Query, How_Query } from "../data/help/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,6 +24,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         helpTemplate {
                             ${Hero_Query}
+                            ${How_Query}
                         }
                     }
                 }
@@ -50,4 +52,5 @@ const {
   isHome={true}
 >
   <Hero data={helpTemplate.hero} />
+  <How data={helpTemplate.how} />
 </Layout>

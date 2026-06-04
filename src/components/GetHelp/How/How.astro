@@ -1,0 +1,48 @@
+---
+// @ts-ignore
+// @ts-nocheck
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./how.scss";
+
+const { intro, title, blocks, outro } = Astro.props.data;
+---
+
+<div class="how">
+  <Wrapper classes="how-wrapper">
+    <div class="how-intro">
+      <div set:html={intro} />
+    </div>
+    <div class="how-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="how-blocks">
+      {
+        blocks.map((block) => {
+          const imageSrc = block.icon?.node?.sourceUrl;
+          const imageAlt = block.icon?.node?.altText || "";
+
+          return (
+            <div class="how-blocks-block">
+              <div class="how-blocks-block-icon">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                />
+              </div>
+              <div class="how-blocks-block-content" set:html={block.content} />
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="how-outro">
+      <div set:html={outro} />
+    </div>
+  </Wrapper>
+</div>

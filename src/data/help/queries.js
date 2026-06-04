@@ -14,3 +14,24 @@ export const Hero_Query = `
         }
     }
 `;
+
+export const How_Query = `
+     how: howComponent {
+        intro
+        title
+        outro
+        blocks {
+            content
+            icon {
+                node {
+                    sourceUrl
+                    altText
+                    mediaDetails {
+                        width
+                        height
+                    }
+                }
+            }
+        }
+    }
+`;
