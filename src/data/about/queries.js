@@ -55,3 +55,23 @@ export const Story_Query = `
         }
     }
 `;
+
+export const Directors_Query = `
+    directors: directorsComponent {
+        title
+        directors {
+            name
+            title
+            image {
+                node {
+                    sourceUrl
+                    altText
+                    mediaDetails {
+                        width
+                        height
+                    }
+                }
+            }
+        }
+    }
+`;

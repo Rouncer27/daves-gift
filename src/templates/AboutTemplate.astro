@@ -4,6 +4,7 @@ import Hero from "../components/About/Hero/Hero.astro";
 import MainContent from "../components/About/MainContent/MainContent.astro";
 import CurvedImage from "../components/About/CurvedImage/CurvedImage.astro";
 import Story from "../components/About/Story/Story.astro";
+import Directors from "../components/About/Directors/Directors.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import {
@@ -11,6 +12,7 @@ import {
   Main_Content_Query,
   Curved_Image_Query,
   Story_Query,
+  Directors_Query,
 } from "../data/about/queries";
 
 // 2️⃣ Get the actual page data by slug
@@ -34,6 +36,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                             ${Main_Content_Query}
                             ${Curved_Image_Query}
                             ${Story_Query}
+                            ${Directors_Query}
                         }
                     }
                 }
@@ -64,4 +67,5 @@ const {
   <MainContent data={aboutTemplate.mainContent} />
   <CurvedImage data={aboutTemplate.curvedImage} />
   <Story data={aboutTemplate.story} />
+  <Directors data={aboutTemplate.directors} />
 </Layout>
