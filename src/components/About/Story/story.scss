@@ -1,0 +1,40 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.about-story {
+  &-wrapper {
+    align-items: center;
+  }
+
+  &-image {
+    position: relative;
+    width: calc(30%);
+
+    &-heart {
+      position: absolute;
+      width: 15.6rem;
+      height: 13.34rem;
+      top: -10rem;
+      right: 15%;
+    }
+  }
+
+  &-content {
+    width: calc(70% - 4rem);
+    margin-left: 4rem;
+
+    &-title {
+      h2 {
+        @extend .hl-two;
+        color: $shadowColor;
+      }
+    }
+
+    &-paragraphs {
+      p {
+        @extend .p-two;
+      }
+    }
+  }
+}

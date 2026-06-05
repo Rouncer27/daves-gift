@@ -9,6 +9,7 @@ const imageSrc = image?.node?.sourceUrl;
 const imageAlt = image?.node?.altText || "";
 
 import mask from "../../../assets/half-circle-cut-beige.png";
+import leaf from "../../../assets/leaf-icon-green.png";
 ---
 
 <div class="curved-image">
@@ -23,6 +24,9 @@ import mask from "../../../assets/half-circle-cut-beige.png";
     <div class="curved-image-image">
       <div class="curved-image-image-mask">
         <img src={mask.src} alt={"Beige mask"} />
+      </div>
+      <div class="curved-image-image-leaf">
+        <img src={leaf.src} alt={"Green leaf"} />
       </div>
       <Image
         src={imageSrc}

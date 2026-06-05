@@ -51,6 +51,16 @@
     position: relative;
     width: calc(40%);
 
+    &-leaf {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 11.35rem);
+      width: 22.7rem;
+      height: 13.4rem;
+      overflow: hidden;
+      z-index: 100;
+    }
+
     &-mask {
       position: absolute;
       top: 0;

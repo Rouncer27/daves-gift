@@ -38,3 +38,20 @@ export const Curved_Image_Query = `
         }
     }
 `;
+
+export const Story_Query = `
+    story: storyComponent {
+        title
+        content
+        image {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+    }
+`;
