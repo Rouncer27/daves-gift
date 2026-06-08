@@ -2,10 +2,15 @@
 // @ts-ignore
 // @ts-nocheck
 import Layout from "../../layouts/Layout.astro";
+import FeaturedImage from "../../components/ResourcesPost/FeaturedImage/FeaturedImage.astro";
+import MainContent from "../../components/ResourcesPost/MainContent/MainContent.astro";
 
 import { Page_Seo_Query } from "../../data/page/queries";
 
-import { Post_Featured_Image_Query } from "../../data/resourcesPost/queries";
+import {
+  Post_Featured_Image_Query,
+  Main_Content_Query,
+} from "../../data/resourcesPost/queries";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -67,6 +72,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           slug
           postType {
             ${Post_Featured_Image_Query}
+            ${Main_Content_Query}
           }
         }
     }
@@ -82,6 +88,12 @@ const {
 } = await response.json();
 ---
 
-<Layout>
-  <h1>Single Post Type</h1>
+<Layout
+  metaImg={post.seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={post.seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={post.seoMetaTags.seoMetaInformation.metaDescription}
+  isHome={false}
+>
+  <FeaturedImage image={post.postType.featuredImage.node} />
+  <MainContent title={post.title} content={post.postType.mainContent} />
 </Layout>

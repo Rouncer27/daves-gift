@@ -6,3 +6,7 @@ export const Post_Featured_Image_Query = `
         }
     }
 `;
+
+export const Main_Content_Query = `
+    mainContent
+`;
