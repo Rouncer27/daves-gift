@@ -95,6 +95,10 @@ switch (true) {
     TemplateComponent = (await import("../templates/FaqsTemplate.astro"))
       .default;
     break;
+  case templateName.includes("involved"):
+    TemplateComponent = (await import("../templates/GetInvolvedTemplate.astro"))
+      .default;
+    break;
   default:
     TemplateComponent = (await import("../templates/DefaultTemplate.astro"))
       .default;
