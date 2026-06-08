@@ -8,16 +8,17 @@ import "./postDisplay.scss";
 const { posts } = Astro.props;
 ---
 
-<div>
-  <Wrapper>
+<div class="post-display">
+  <Wrapper classes="post-display-wrapper">
     {
-      posts.map((post) => {
-        console.log(post.node);
+      posts.map((post, index) => {
         const imageSrc = post.node.postType.featuredImage?.node?.sourceUrl;
         const imageAlt = post.node.postType.featuredImage?.node?.altText || "";
         return (
-          <div>
-            <div>
+          <div
+            class={`post-display-post${index % 2 !== 0 ? " post-reversed" : ""}`}
+          >
+            <div class="post-display-post-image">
               <Image
                 src={imageSrc}
                 alt={imageAlt}
@@ -28,12 +29,15 @@ const { posts } = Astro.props;
                 inferSize={true}
               />
             </div>
-            <div>
-              <div>
+            <div class="post-display-post-intro">
+              <div class="post-display-post-intro-title">
                 <h2>{post.node.title}</h2>
               </div>
-              <div set:html={post.node.postType.excerpt} />
-              <div>
+              <div
+                class="post-display-post-intro-excerpt"
+                set:html={post.node.postType.excerpt}
+              />
+              <div class="post-display-post-intro-link">
                 <a href={`/resources/${post.node.slug}`}>Read</a>
               </div>
             </div>

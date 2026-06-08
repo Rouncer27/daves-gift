@@ -1,0 +1,33 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.post-display {
+  &-post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem auto 0;
+
+    &-image {
+      width: calc(30%);
+    }
+
+    &-intro {
+      width: calc(70% - 2rem);
+      margin-left: 2rem;
+      padding: 4rem;
+      background-color: #f2eddf;
+    }
+
+    &.post-reversed {
+      flex-direction: row-reverse;
+
+      .post-display-post-intro {
+        margin-right: 2rem;
+        margin-left: 0;
+      }
+    }
+  }
+}
