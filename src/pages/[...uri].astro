@@ -87,6 +87,10 @@ switch (true) {
     TemplateComponent = (await import("../templates/HelpTemplate.astro"))
       .default;
     break;
+  case templateName.includes("resources"):
+    TemplateComponent = (await import("../templates/ResourcesTemplate.astro"))
+      .default;
+    break;
   default:
     TemplateComponent = (await import("../templates/DefaultTemplate.astro"))
       .default;
