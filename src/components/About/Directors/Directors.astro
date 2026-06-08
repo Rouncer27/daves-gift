@@ -19,7 +19,7 @@ const { title, directors } = Astro.props.data;
           const imageSrc = director.image?.node?.sourceUrl;
           const imageAlt = director.image?.node?.altText || "";
           return (
-            <div>
+            <div class="about-directors-director">
               <div>
                 <Image
                   src={imageSrc}
