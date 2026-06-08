@@ -14,3 +14,30 @@ export const Hero_Query = `
         }
     }
 `;
+
+export const Post_Display_Query = `
+     postDisplay: postDisplayComponent {
+        displayPosts
+    }
+`;
+
+export const All_posts_Query = `
+    posts: posts(first: 999999) {
+        edges {
+            node {
+                slug
+                title
+                postType {
+                    excerpt
+                    featuredImage {
+                        node {
+                            altText
+                            sourceUrl
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+`;

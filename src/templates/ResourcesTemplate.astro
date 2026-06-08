@@ -1,9 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Resources/Hero/Hero.astro";
+import PostDisplay from "../components/Resources/PostDisplay/PostDisplay.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/resources/queries";
+import {
+  Hero_Query,
+  Post_Display_Query,
+  All_posts_Query,
+} from "../data/resources/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,10 +28,12 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         resourcesTemplate {
                             ${Hero_Query}
+                            ${Post_Display_Query}
                         }
                     }
                 }
 			}
+            ${All_posts_Query}
 		}
 	`,
     variables: { slug: `${uri}` },
@@ -35,6 +42,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
+    posts,
     page: {
       seoMetaTags,
       template: { resourcesTemplate },
@@ -50,4 +58,9 @@ const {
   isHome={true}
 >
   <Hero data={resourcesTemplate.hero} />
+  {
+    resourcesTemplate.postDisplay.displayPosts ? (
+      <PostDisplay posts={posts.edges} />
+    ) : null
+  }
 </Layout>
