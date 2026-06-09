@@ -99,6 +99,15 @@ switch (true) {
     TemplateComponent = (await import("../templates/GetInvolvedTemplate.astro"))
       .default;
     break;
+  case templateName.includes("communities"):
+    TemplateComponent = (
+      await import("../templates/CommunitiesEventsTemplate.astro")
+    ).default;
+    break;
+  case templateName.includes("partners"):
+    TemplateComponent = (await import("../templates/PartnersTemplate.astro"))
+      .default;
+    break;
   default:
     TemplateComponent = (await import("../templates/DefaultTemplate.astro"))
       .default;
