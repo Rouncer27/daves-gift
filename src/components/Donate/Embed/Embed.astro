@@ -1,0 +1,15 @@
+---
+import Wrapper from "../../common/shared/Wrapper.astro";
+import Wysiwyg from "../../common/shared/Wysiwyg.astro";
+import "./embed.scss";
+
+const { embedCode } = Astro.props.data;
+---
+
+<div>
+  <Wrapper>
+    <Wysiwyg>
+      <div set:html={embedCode} />
+    </Wysiwyg>
+  </Wrapper>
+</div>

@@ -1,9 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Donate/Hero/Hero.astro";
+import PageIntro from "../components/Donate/PageIntro/PageIntro.astro";
+import Embed from "../components/Donate/Embed/Embed.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/donate/queries";
+import {
+  Hero_Query,
+  Page_Intro_Query,
+  Embed_Query,
+} from "../data/donate/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,6 +29,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         donateTemplate {
                             ${Hero_Query}
+                            ${Page_Intro_Query}
+                            ${Embed_Query}
                         }
                     }
                 }
@@ -50,4 +58,6 @@ const {
   isHome={true}
 >
   <Hero data={donateTemplate.hero} />
+  <PageIntro data={donateTemplate.pageIntro} />
+  <Embed data={donateTemplate.embed} />
 </Layout>

@@ -1,0 +1,15 @@
+---
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./pageIntro.scss";
+
+const { title, content } = Astro.props.data;
+---
+
+<div class="donate-page-intro">
+  <Wrapper classes="donate-page-intro-wrapper">
+    <div class="donate-page-intro-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="donate-page-intro-content" set:html={content} />
+  </Wrapper>
+</div>
