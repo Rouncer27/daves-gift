@@ -8,12 +8,12 @@ const { intro, displayContactForm } = Astro.props.data;
 
 {
   displayContactForm ? (
-    <div>
-      <Wrapper>
-        <div>
+    <div class="contact-page-form">
+      <Wrapper classes="contact-page-form-wrapper">
+        <div class="contact-page-form-intro">
           <div set:html={intro} />
         </div>
-        <div>
+        <div class="contact-page-form-container">
           <ContactForm client:only="react" />
         </div>
       </Wrapper>

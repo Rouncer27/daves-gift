@@ -1,0 +1,13 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.contact-page-form {
+  &-intro {
+    width: 100%;
+
+    p {
+      @extend .p-one;
+    }
+  }
+}
