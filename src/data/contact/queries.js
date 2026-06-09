@@ -14,3 +14,19 @@ export const Hero_Query = `
         }
     }
 `;
+
+export const Contact_Information_Query = `
+    contactInformation: contactInformation {
+        content
+        displayContactInfo
+        displaySocialMedia
+        title
+    }
+`;
+
+export const Contact_Form_Display_Query = `
+    contactFormDisplay: contactFormComponent {
+        intro
+        displayContactForm
+    }
+`;

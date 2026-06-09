@@ -1,0 +1,50 @@
+---
+import Wrapper from "../../common/shared/Wrapper.astro";
+import SocialMediaLinks from "../../common/SocialMedia/SocialMediaLinks.astro";
+import "./contactInformation.scss";
+
+const { title, content, displayContactInfo, displaySocialMedia } =
+  Astro.props.data;
+const { contactInformation, socialMediaLinks } = Astro.props;
+
+import email from "../../../assets/email.png";
+const socialMedia = { socialMedia: { ...socialMediaLinks } };
+---
+
+<div class="contact-page-imformation">
+  <Wrapper classes="contact-page-imformation-wrapper">
+    <div class="contact-page-imformation-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="contact-page-imformation-content" set:html={content} />
+    <div class="contact-page-imformation-contact">
+      <div class="contact-page-imformation-contact-icon">
+        <img src={email.src} alt={"Email Icon"} />
+      </div>
+      {
+        displayContactInfo ? (
+          <div class="contact-page-imformation-contact-emailphone">
+            <p>
+              <a href={`+1-${contactInformation.phoneNumber}`}>
+                {contactInformation.phoneNumber}
+              </a>
+            </p>
+            <p>
+              <a href={`mailto: ${contactInformation.emailAddress}`}>
+                {contactInformation.emailAddress}
+              </a>
+            </p>
+          </div>
+        ) : null
+      }
+
+      {
+        displaySocialMedia ? (
+          <div class="contact-page-imformation-social">
+            <SocialMediaLinks socialMedia={socialMedia} />
+          </div>
+        ) : null
+      }
+    </div>
+  </Wrapper>
+</div>

@@ -1,9 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Contact/Hero/Hero.astro";
+import ContactInformation from "../components/Contact/ContactInformation/ContactInformation.astro";
+import ContactFormDisplay from "../components/Contact/ContactFormDisplay/ContactFormDisplay.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/contact/queries";
+import {
+  Hero_Query,
+  Contact_Information_Query,
+  Contact_Form_Display_Query,
+} from "../data/contact/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,10 +29,26 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         contactTemplate {
                             ${Hero_Query}
+                            ${Contact_Information_Query}
+                            ${Contact_Form_Display_Query}
                         }
                     }
                 }
 			}
+
+      siteWideSettings {
+        contactInformation {
+          phoneNumber
+          emailAddress
+        }
+
+        socialMedia {
+          youtubeLink
+          linkedinLink
+          instagramLink
+          facebookLink
+        }
+      }
 		}
 	`,
     variables: { slug: `${uri}` },
@@ -35,6 +57,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
+    siteWideSettings,
     page: {
       seoMetaTags,
       template: { contactTemplate },
@@ -50,4 +73,10 @@ const {
   isHome={true}
 >
   <Hero data={contactTemplate.hero} />
+  <ContactInformation
+    data={contactTemplate.contactInformation}
+    contactInformation={siteWideSettings.contactInformation}
+    socialMediaLinks={siteWideSettings.socialMedia}
+  />
+  <ContactFormDisplay data={contactTemplate.contactFormDisplay} />
 </Layout>
