@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Contact/Hero/Hero.astro";
+import Hero from "../components/Advocacy/Hero/Hero.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/contact/queries";
+import { Hero_Query } from "../data/advocacy/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -15,13 +15,13 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   },
   body: JSON.stringify({
     query: `
-		query contactTempQuery($slug: ID!) {
+		query advocacyTempQuery($slug: ID!) {
 			page(id: $slug, idType: URI) {
 				${Page_Seo_Query}
                 template {
-                ... on Template_Contact {
+                ... on Template_Advocacy {
                     templateName
-                        contactTemplate {
+                        advocacyTemplate {
                             ${Hero_Query}
                         }
                     }
@@ -37,7 +37,7 @@ const {
   data: {
     page: {
       seoMetaTags,
-      template: { contactTemplate },
+      template: { advocacyTemplate },
     },
   },
 } = await response.json();
@@ -49,5 +49,5 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
   isHome={true}
 >
-  <Hero data={contactTemplate.hero} />
+  <Hero data={advocacyTemplate.hero} />
 </Layout>
