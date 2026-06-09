@@ -30,6 +30,7 @@
       }
 
       li {
+        position: relative;
         @extend .p-two;
         margin: 0 1rem;
 
@@ -68,9 +69,8 @@
           position: absolute;
           top: calc(100% + 0.1rem);
           left: 0;
-          width: 100%;
+          width: 150%;
           padding: 1rem;
-          background-color: rgba($whiteColor, 0.2);
           transition: all 0.3s ease-in-out;
           opacity: 0;
           visibility: hidden;
@@ -82,28 +82,26 @@
           }
 
           li {
+            @extend .p-two;
+            width: 100%;
             margin: 0;
-            text-align: center;
 
             a {
-              @extend .p-two;
+              @extend .p-three;
               padding: 0.5rem 0;
-              border-top: 0.2rem solid transparent;
-              border-bottom: 0.2rem solid transparent;
-              font-weight: 500;
+              border-bottom: 0.1rem solid transparent;
               color: $whiteColor;
+              line-height: 1;
 
               &:hover {
                 color: $whiteColor;
-                border-top-color: $accentColor;
-                border-bottom-color: $accentColor;
+                border-bottom-color: $whiteColor;
               }
             }
 
             a.main-nav-sub-current {
               color: $whiteColor;
-              border-top-color: $accentColor;
-              border-bottom-color: $accentColor;
+              border-bottom-color: $whiteColor;
 
               &:hover {
                 cursor: default;
