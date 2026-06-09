@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Faqs/Hero/Hero.astro";
+import Faqs from "../components/Faqs/Faqs/Faqs.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/faqs/queries";
+import { Hero_Query, Faqs_Query } from "../data/faqs/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,6 +24,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         faqsTemplate {
                             ${Hero_Query}
+                            ${Faqs_Query}
                         }
                     }
                 }
@@ -50,4 +52,5 @@ const {
   isHome={true}
 >
   <Hero data={faqsTemplate.hero} />
+  <Faqs data={faqsTemplate.faqs} />
 </Layout>

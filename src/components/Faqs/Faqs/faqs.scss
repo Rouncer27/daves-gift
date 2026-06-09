@@ -1,0 +1,49 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.faqs-section {
+  @media (min-width: 768px) {
+    padding: 5rem 0;
+  }
+
+  &-item {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    &-title {
+      width: 100%;
+      padding: 2rem;
+      background-color: #f2eddf;
+      cursor: pointer;
+
+      p {
+        @extend .p-one;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+      }
+    }
+
+    &-content {
+      width: 100%;
+      background-color: #fff;
+
+      &-inner {
+        padding: 3.6rem;
+
+        p,
+        a,
+        li {
+          @extend .p-two;
+        }
+
+        a {
+          &:hover {
+            color: $accentColor;
+          }
+        }
+      }
+    }
+  }
+}

@@ -14,3 +14,14 @@ export const Hero_Query = `
         }
     }
 `;
+
+export const Faqs_Query = `
+   	faqs: faqsComponent {
+        title
+        subTitle
+        faqs {
+            question
+            answer
+        }
+    }
+`;
