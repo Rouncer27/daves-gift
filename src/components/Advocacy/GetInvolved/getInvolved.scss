@@ -1,0 +1,65 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.get-involved {
+  padding: 5rem 0 0;
+  background-color: #f2eddf;
+
+  &-content {
+    width: calc(70%);
+
+    &-inner {
+      margin-right: 9rem;
+    }
+
+    &-title {
+      width: 100%;
+
+      h2 {
+        @extend .hl-three;
+        color: $accentColor;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+    }
+
+    &-paragraph {
+      p {
+        @extend .p-two;
+      }
+    }
+
+    &-buttons {
+      width: 100%;
+
+      a {
+        margin-bottom: 2.5rem;
+      }
+    }
+  }
+
+  &-image {
+    position: relative;
+    width: calc(30%);
+
+    &-mask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 100;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        object-position: center;
+        z-index: 1;
+      }
+    }
+  }
+}

@@ -1,9 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Advocacy/Hero/Hero.astro";
+import AdvocacyIntro from "../components/Advocacy/AdvocacyIntro/AdvocacyIntro.astro";
+import GetInvolved from "../components/Advocacy/GetInvolved/GetInvolved.astro";
+import ImageRow from "../components/Advocacy/ImageRow/ImageRow.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/advocacy/queries";
+import {
+  Hero_Query,
+  Advocacy_Intro_Query,
+  Get_Involved_Query,
+  Image_Row_Query,
+} from "../data/advocacy/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -18,14 +26,17 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 		query advocacyTempQuery($slug: ID!) {
 			page(id: $slug, idType: URI) {
 				${Page_Seo_Query}
-                template {
-                ... on Template_Advocacy {
-                    templateName
-                        advocacyTemplate {
-                            ${Hero_Query}
-                        }
-                    }
+        template {
+        ... on Template_Advocacy {
+            templateName
+                advocacyTemplate {
+                    ${Hero_Query}
+                    ${Advocacy_Intro_Query}
+                    ${Get_Involved_Query}
+                    ${Image_Row_Query}
                 }
+            }
+        }
 			}
 		}
 	`,
@@ -50,4 +61,7 @@ const {
   isHome={true}
 >
   <Hero data={advocacyTemplate.hero} />
+  <AdvocacyIntro data={advocacyTemplate.advocacyIntro} />
+  <GetInvolved data={advocacyTemplate.getInvolved} />
+  <ImageRow data={advocacyTemplate.imageRow} />
 </Layout>
