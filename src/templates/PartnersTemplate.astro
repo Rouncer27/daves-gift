@@ -1,9 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Partners/Hero/Hero.astro";
+import PartnersIntro from "../components/Partners/PartnersIntro/PartnersIntro.astro";
+import WithUs from "../components/Partners/WithUs/WithUs.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/partners/queries";
+import {
+  Hero_Query,
+  Partners_Intro_Query,
+  With_Us_Query,
+} from "../data/partners/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,6 +29,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         partnersTemplate {
                             ${Hero_Query}
+                            ${Partners_Intro_Query}
+                            ${With_Us_Query}
                         }
                     }
                 }
@@ -50,4 +58,6 @@ const {
   isHome={true}
 >
   <Hero data={partnersTemplate.hero} />
+  <PartnersIntro data={partnersTemplate.partnersIntro} />
+  <WithUs data={partnersTemplate.withUs} />
 </Layout>
