@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import Button from "../../common/shared/Button.astro";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./fourBlocks.scss";
+
+const {
+  titleTop,
+  contentTop,
+  buttonTopText,
+  imageTop,
+  titleBottom,
+  contentBottom,
+  buttonBottomText,
+  imageBottom,
+  buttonTopLink,
+  buttonBottomLink,
+} = Astro.props.data;
+
+const imageSrc = imageTop?.node?.sourceUrl;
+const imageAlt = imageTop?.node?.altText || "";
+
+const imageBotSrc = imageBottom?.node?.sourceUrl;
+const imageBotAlt = imageBottom?.node?.altText || "";
+---
+
+<div>
+  <Wrapper>
+    <div>
+      <div>
+        <div>
+          <h2>{titleTop}</h2>
+        </div>
+        <div set:html={contentTop} />
+        <div>
+          <Button ele="a" href={buttonTopLink.edges[0].node.uri}
+            >{buttonTopText}</Button
+          >
+        </div>
+      </div>
+      <div>
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          format="webp"
+          widths={[800, 1200, 1600, 2000]}
+          sizes="100vw"
+          loading="eager"
+          inferSize={true}
+          class=""
+        />
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <h2>{titleBottom}</h2>
+        </div>
+        <div set:html={contentBottom} />
+        <div>
+          <Button ele="a" href={buttonBottomLink.edges[0].node.uri}
+            >{buttonBottomText}</Button
+          >
+        </div>
+      </div>
+      <div>
+        <Image
+          src={imageBotSrc}
+          alt={imageBotAlt}
+          format="webp"
+          widths={[800, 1200, 1600, 2000]}
+          sizes="100vw"
+          loading="eager"
+          inferSize={true}
+          class=""
+        />
+      </div>
+    </div>
+  </Wrapper>
+</div>

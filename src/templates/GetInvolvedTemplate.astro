@@ -1,9 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/GetInvolved/Hero/Hero.astro";
+import UpcomingEvents from "../components/GetInvolved/UpcomingEvents/UpcomingEvents.astro";
+import FourBlocks from "../components/GetInvolved/FourBlocks/FourBlocks.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Query } from "../data/getInvolved/queries";
+import {
+  Hero_Query,
+  Upcoming_Events_Query,
+  Four_Blocks_Query,
+} from "../data/getInvolved/queries";
 
 // 2️⃣ Get the actual page data by slug
 const { uri } = Astro.params;
@@ -23,6 +29,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                     templateName
                         getInvolvedTemplate {
                             ${Hero_Query}
+                            ${Upcoming_Events_Query}
+                            ${Four_Blocks_Query}
                         }
                     }
                 }
@@ -50,4 +58,6 @@ const {
   isHome={true}
 >
   <Hero data={getInvolvedTemplate.hero} />
+  <UpcomingEvents data={getInvolvedTemplate.upcomingEvents} />
+  <FourBlocks data={getInvolvedTemplate.fourBlocks} />
 </Layout>
