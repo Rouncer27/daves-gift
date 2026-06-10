@@ -24,21 +24,21 @@ const imageBotSrc = imageBottom?.node?.sourceUrl;
 const imageBotAlt = imageBottom?.node?.altText || "";
 ---
 
-<div>
-  <Wrapper>
-    <div>
-      <div>
-        <div>
+<div class="four-blocks">
+  <div class="four-blocks-wrapper">
+    <div class="four-blocks-top">
+      <div class="four-blocks-top-content">
+        <div class="four-blocks-to-content-title">
           <h2>{titleTop}</h2>
         </div>
-        <div set:html={contentTop} />
-        <div>
+        <div class="four-blocks-to-content-paragraph" set:html={contentTop} />
+        <div class="four-blocks-to-content-link">
           <Button ele="a" href={buttonTopLink.edges[0].node.uri}
             >{buttonTopText}</Button
           >
         </div>
       </div>
-      <div>
+      <div class="four-blocks-top-image">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -52,19 +52,24 @@ const imageBotAlt = imageBottom?.node?.altText || "";
       </div>
     </div>
 
-    <div>
-      <div>
-        <div>
+    <div class="four-blocks-bottom">
+      <div class="four-blocks-bottom-content">
+        <div class="four-blocks-bottom-content-title">
           <h2>{titleBottom}</h2>
         </div>
-        <div set:html={contentBottom} />
-        <div>
-          <Button ele="a" href={buttonBottomLink.edges[0].node.uri}
-            >{buttonBottomText}</Button
+        <div
+          class="four-blocks-bottom-content-paragraph"
+          set:html={contentBottom}
+        />
+        <div class="four-blocks-bottom-content-link">
+          <Button
+            btnstyle="two"
+            ele="a"
+            href={buttonBottomLink.edges[0].node.uri}>{buttonBottomText}</Button
           >
         </div>
       </div>
-      <div>
+      <div class="four-blocks-bottom-image">
         <Image
           src={imageBotSrc}
           alt={imageBotAlt}
@@ -77,5 +82,5 @@ const imageBotAlt = imageBottom?.node?.altText || "";
         />
       </div>
     </div>
-  </Wrapper>
+  </div>
 </div>

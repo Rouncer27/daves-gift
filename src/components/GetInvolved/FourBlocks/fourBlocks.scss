@@ -1,0 +1,74 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.four-blocks {
+  &-wrappe {
+    width: 100%;
+  }
+
+  &-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: $secondaryColor;
+
+    &-content {
+      width: calc(50%);
+      max-width: 60rem;
+      margin-left: auto;
+      margin-right: 0;
+      padding: 5rem;
+
+      h2 {
+        @extend .hl-four;
+        color: $whiteColor;
+        font-weight: 500;
+      }
+
+      p {
+        @extend .p-one;
+        color: $whiteColor;
+      }
+    }
+
+    &-image {
+      width: calc(50%);
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: $tertiaryColor;
+
+    &-content {
+      width: calc(50%);
+      max-width: 60rem;
+      margin-left: 0;
+      margin-right: auto;
+      padding: 5rem;
+
+      h2 {
+        @extend .hl-four;
+        color: $whiteColor;
+        font-weight: 500;
+      }
+
+      p {
+        @extend .p-one;
+        color: $whiteColor;
+      }
+    }
+
+    &-image {
+      width: calc(50%);
+    }
+  }
+}
