@@ -1,0 +1,23 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.post-involved {
+  &-post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem auto 0;
+
+    &-image {
+      width: calc(30%);
+    }
+
+    &-intro {
+      width: calc(70% - 2rem);
+      margin-left: 2rem;
+      padding: 4rem;
+    }
+  }
+}

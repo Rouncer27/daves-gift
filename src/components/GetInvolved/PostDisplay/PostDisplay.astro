@@ -1,0 +1,52 @@
+---
+// @ts-ignore
+// @ts-nocheck
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./postDisplay.scss";
+import Button from "../../common/shared/Button.astro";
+
+const { posts } = Astro.props;
+---
+
+<div class="post-involved">
+  <Wrapper classes="post-involved-wrapper">
+    {
+      posts.map((post, index) => {
+        const imageSrc = post.node.postType.featuredImage?.node?.sourceUrl;
+        const imageAlt = post.node.postType.featuredImage?.node?.altText || "";
+        return (
+          <div
+            class={`post-involved-post${index % 2 !== 0 ? " post-reversed" : ""}`}
+          >
+            <div class="post-involved-post-image">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                format="webp"
+                widths={[800, 1200, 1600, 2000]}
+                sizes="100vw"
+                loading="eager"
+                inferSize={true}
+              />
+            </div>
+            <div class="post-involved-post-intro">
+              <div class="post-involved-post-intro-title">
+                <h2>{post.node.title}</h2>
+              </div>
+              <div
+                class="post-involved-post-intro-excerpt"
+                set:html={post.node.postType.excerpt}
+              />
+              <div class="post-involved-post-intro-link">
+                <Button ele="a" href={`/resources/${post.node.slug}`}>
+                  Read
+                </Button>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </Wrapper>
+</div>

@@ -3,12 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/GetInvolved/Hero/Hero.astro";
 import UpcomingEvents from "../components/GetInvolved/UpcomingEvents/UpcomingEvents.astro";
 import FourBlocks from "../components/GetInvolved/FourBlocks/FourBlocks.astro";
+import PostDisplay from "../components/GetInvolved/PostDisplay/PostDisplay.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import {
   Hero_Query,
   Upcoming_Events_Query,
   Four_Blocks_Query,
+  All_posts_Query,
 } from "../data/getInvolved/queries";
 
 // 2️⃣ Get the actual page data by slug
@@ -24,17 +26,18 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 		query getInvolvedTempQuery($slug: ID!) {
 			page(id: $slug, idType: URI) {
 				${Page_Seo_Query}
-                template {
-                ... on Template_GetInvolved {
-                    templateName
-                        getInvolvedTemplate {
-                            ${Hero_Query}
-                            ${Upcoming_Events_Query}
-                            ${Four_Blocks_Query}
-                        }
-                    }
-                }
+          template {
+          ... on Template_GetInvolved {
+              templateName
+                  getInvolvedTemplate {
+                      ${Hero_Query}
+                      ${Upcoming_Events_Query}
+                      ${Four_Blocks_Query}
+                  }
+              }
+          }
 			}
+      ${All_posts_Query}
 		}
 	`,
     variables: { slug: `${uri}` },
@@ -43,12 +46,15 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
+    posts,
     page: {
       seoMetaTags,
       template: { getInvolvedTemplate },
     },
   },
 } = await response.json();
+
+console.log("posts", posts);
 ---
 
 <Layout
@@ -60,4 +66,5 @@ const {
   <Hero data={getInvolvedTemplate.hero} />
   <UpcomingEvents data={getInvolvedTemplate.upcomingEvents} />
   <FourBlocks data={getInvolvedTemplate.fourBlocks} />
+  <PostDisplay posts={posts.edges} />
 </Layout>

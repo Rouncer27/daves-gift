@@ -92,3 +92,24 @@ export const Four_Blocks_Query = `
         }
     }
 `;
+
+export const All_posts_Query = `
+    posts: posts(first: 2) {
+        edges {
+            node {
+                slug
+                title
+                postType {
+                    excerpt
+                    featuredImage {
+                        node {
+                            altText
+                            sourceUrl
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+`;
