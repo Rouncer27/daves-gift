@@ -1,0 +1,20 @@
+---
+import Button from "../../common/shared/Button.astro";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./callout.scss";
+
+const { title, content, buttonText, buttonType, buttonEmail } =
+  Astro.props.data;
+---
+
+<div class="callout">
+  <Wrapper classes="callout-wrapper">
+    <div class="callout-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="callout-content" set:html={content} />
+    <div class="callout-link">
+      <Button ele="a" href={`mailto: ${buttonEmail}`}>{buttonText}</Button>
+    </div>
+  </Wrapper>
+</div>

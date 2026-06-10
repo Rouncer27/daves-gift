@@ -3,12 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Partners/Hero/Hero.astro";
 import PartnersIntro from "../components/Partners/PartnersIntro/PartnersIntro.astro";
 import WithUs from "../components/Partners/WithUs/WithUs.astro";
+import Collaborators from "../components/Partners/Collaborators/Collaborators.astro";
+import Callout from "../components/Partners/Callout/Callout.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import {
   Hero_Query,
   Partners_Intro_Query,
   With_Us_Query,
+  Collaborators_Query,
+  Callout_Query,
 } from "../data/partners/queries";
 
 // 2️⃣ Get the actual page data by slug
@@ -24,16 +28,18 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 		query partnersTempQuery($slug: ID!) {
 			page(id: $slug, idType: URI) {
 				${Page_Seo_Query}
-                template {
-                ... on Template_Partners {
-                    templateName
-                        partnersTemplate {
-                            ${Hero_Query}
-                            ${Partners_Intro_Query}
-                            ${With_Us_Query}
-                        }
-                    }
-                }
+          template {
+          ... on Template_Partners {
+              templateName
+                  partnersTemplate {
+                      ${Hero_Query}
+                      ${Partners_Intro_Query}
+                      ${With_Us_Query}
+                      ${Collaborators_Query}
+                      ${Callout_Query}
+                  }
+              }
+          }
 			}
 		}
 	`,
@@ -60,4 +66,6 @@ const {
   <Hero data={partnersTemplate.hero} />
   <PartnersIntro data={partnersTemplate.partnersIntro} />
   <WithUs data={partnersTemplate.withUs} />
+  <Collaborators data={partnersTemplate.collaborators} />
+  <Callout data={partnersTemplate.callout} />
 </Layout>

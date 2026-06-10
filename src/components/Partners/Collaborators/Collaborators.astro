@@ -1,0 +1,46 @@
+---
+// @ts-ignore
+// @ts-nocheck
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./collaborators.scss";
+
+const { title, content, collaborators } = Astro.props.data;
+---
+
+<div>
+  <Wrapper>
+    <div>
+      <h2>{title}</h2>
+      <div set:html={content} />
+    </div>
+    <div>
+      {
+        collaborators.map((collab) => {
+          const imageSrc = collab.logo?.node?.sourceUrl;
+          const imageAlt = collab.logo?.node?.altText || "";
+          return (
+            <div>
+              <div>
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                  class=""
+                />
+              </div>
+              <div>
+                <h3>{collab.name}</h3>
+              </div>
+              <div set:html={collab.content} />
+            </div>
+          );
+        })
+      }
+    </div>
+  </Wrapper>
+</div>

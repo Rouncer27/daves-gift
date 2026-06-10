@@ -42,3 +42,34 @@ export const With_Us_Query = `
         }
     }
 `;
+
+export const Collaborators_Query = `
+     collaborators: collaboratorsComponent {
+        title
+        content
+        collaborators {
+            name
+            content
+            logo {
+                node {
+                    sourceUrl
+                    altText
+                    mediaDetails {
+                        width
+                        height
+                    }
+                }
+            }
+        }        
+    }
+`;
+
+export const Callout_Query = `
+     callout: calloutComponent {
+        title
+        content
+        buttonText
+        buttonType
+        buttonEmail       
+    }
+`;

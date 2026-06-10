@@ -1,0 +1,30 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.callout {
+  padding: 8.5rem 0;
+  background-color: $shadowColor;
+
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-three;
+      color: $whiteColor;
+    }
+  }
+
+  &-content {
+    width: 100%;
+
+    p {
+      @extend .p-one;
+      color: $whiteColor;
+    }
+  }
+
+  &-link {
+    width: 100%;
+  }
+}
