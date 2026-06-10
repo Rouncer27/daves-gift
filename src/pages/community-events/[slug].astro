@@ -1,0 +1,99 @@
+---
+// @ts-ignore
+// @ts-nocheck
+import Layout from "../../layouts/Layout.astro";
+import FeaturedImage from "../../components/Event/FeaturedImage/FeaturedImage.astro";
+import MainContent from "../../components/Event/MainContent/MainContent.astro";
+
+import { Page_Seo_Query } from "../../data/page/queries";
+
+import {
+  Post_Featured_Image_Query,
+  Main_Content_Query,
+} from "../../data/event/queries";
+
+export async function getStaticPaths() {
+  const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query eventsQuery {
+            events(first: 999999) {
+                nodes {
+                    slug
+                    uri
+                }
+            }
+        }
+      `,
+    }),
+  });
+
+  const { data } = await response.json();
+  const allEvents = data.events.nodes;
+  return allEvents.map((event, index) => {
+    return {
+      params: { slug: `${event.slug}` },
+      props: {
+        next:
+          index === 0
+            ? null
+            : {
+                slug: allEvents[index - 1].slug,
+                title: allEvents[index - 1].title,
+              },
+        prev:
+          index === allEvents.length - 1
+            ? null
+            : {
+                slug: allEvents[index + 1].slug,
+                title: allEvents[index + 1].title,
+              },
+      },
+    };
+  });
+}
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+    query eventQuery($id: ID!) {
+        event(idType: SLUG, id: $id) {
+          ${Page_Seo_Query}
+          title
+          date
+          slug
+          eventAcf {
+            ${Post_Featured_Image_Query}
+            ${Main_Content_Query}
+          }
+        }
+    }
+    `,
+    variables: {
+      id: Astro.params["slug"],
+    },
+  }),
+});
+
+const {
+  data: { event },
+} = await response.json();
+---
+
+<Layout
+  metaImg={event.seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={event.seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={event.seoMetaTags.seoMetaInformation.metaDescription}
+  isHome={false}
+>
+  <FeaturedImage image={event.eventAcf.featuredImage.node} />
+  <MainContent title={event.title} content={event.eventAcf.mainContent} />
+</Layout>

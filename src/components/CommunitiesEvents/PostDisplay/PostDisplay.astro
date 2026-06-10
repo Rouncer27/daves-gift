@@ -1,0 +1,49 @@
+---
+// @ts-ignore
+// @ts-nocheck
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./postDisplay.scss";
+
+const { posts } = Astro.props;
+---
+
+<div class="post-display">
+  <Wrapper classes="post-display-wrapper">
+    {
+      posts.map((post, index) => {
+        const imageSrc = post.node.eventAcf.featuredImage?.node?.sourceUrl;
+        const imageAlt = post.node.eventAcf.featuredImage?.node?.altText || "";
+        return (
+          <div
+            class={`post-display-post${index % 2 !== 0 ? " post-reversed" : ""}`}
+          >
+            <div class="post-display-post-image">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                format="webp"
+                widths={[800, 1200, 1600, 2000]}
+                sizes="100vw"
+                loading="eager"
+                inferSize={true}
+              />
+            </div>
+            <div class="post-display-post-intro">
+              <div class="post-display-post-intro-title">
+                <h2>{post.node.title}</h2>
+              </div>
+              <div
+                class="post-display-post-intro-excerpt"
+                set:html={post.node.eventAcf.excerpt}
+              />
+              <div class="post-display-post-intro-link">
+                <a href={`/community-events/${post.node.slug}`}>Read</a>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </Wrapper>
+</div>

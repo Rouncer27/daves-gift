@@ -14,3 +14,25 @@ export const Hero_Query = `
         }
     }
 `;
+
+export const All_Events_Query = `
+    events: events(first: 999999) {
+        edges {
+            node {
+                slug
+                title
+                eventAcf {
+                    excerpt
+                    mainContent
+                    featuredImage {
+                        node {
+                            altText
+                            sourceUrl
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+`;
