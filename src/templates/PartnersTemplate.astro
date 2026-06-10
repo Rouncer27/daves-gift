@@ -5,6 +5,7 @@ import PartnersIntro from "../components/Partners/PartnersIntro/PartnersIntro.as
 import WithUs from "../components/Partners/WithUs/WithUs.astro";
 import Collaborators from "../components/Partners/Collaborators/Collaborators.astro";
 import Callout from "../components/Partners/Callout/Callout.astro";
+import Donors from "../components/Partners/Donors/Donors.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import {
@@ -13,6 +14,7 @@ import {
   With_Us_Query,
   Collaborators_Query,
   Callout_Query,
+  Donors_Query,
 } from "../data/partners/queries";
 
 // 2️⃣ Get the actual page data by slug
@@ -37,6 +39,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                       ${With_Us_Query}
                       ${Collaborators_Query}
                       ${Callout_Query}
+                      ${Donors_Query}
                   }
               }
           }
@@ -68,4 +71,5 @@ const {
   <WithUs data={partnersTemplate.withUs} />
   <Collaborators data={partnersTemplate.collaborators} />
   <Callout data={partnersTemplate.callout} />
+  <Donors data={partnersTemplate.donors} />
 </Layout>

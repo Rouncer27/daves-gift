@@ -1,0 +1,41 @@
+---
+// @ts-ignore
+// @ts-nocheck
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./donors.scss";
+
+const { title, donors } = Astro.props.data;
+---
+
+<div class="donors">
+  <Wrapper classes="donors-wrapper">
+    <div class="donors-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="donors-logos">
+      {
+        donors.map((donor) => {
+          const imageSrc = donor.logo?.node?.sourceUrl;
+          const imageAlt = donor.logo?.node?.altText || "";
+          return (
+            <div class="donors-logo">
+              <div>
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                  class=""
+                />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </Wrapper>
+</div>

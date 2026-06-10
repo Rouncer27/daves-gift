@@ -73,3 +73,21 @@ export const Callout_Query = `
         buttonEmail       
     }
 `;
+
+export const Donors_Query = `
+     donors: donorsComponent {
+        title
+        donors {
+            logo {
+                node {
+                    sourceUrl
+                    altText
+                    mediaDetails {
+                        width
+                        height
+                    }
+                }
+            }
+        }      
+    }
+`;
