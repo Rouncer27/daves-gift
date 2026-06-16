@@ -4,7 +4,17 @@
 
 .faqs-section {
   @media (min-width: 768px) {
-    padding: 5rem 0;
+    padding: 2.5rem 0;
+  }
+
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-three;
+      color: $primaryColor;
+      font-weight: 500;
+    }
   }
 
   &-item {

@@ -7,7 +7,7 @@ import Wysiwyg from "../../common/shared/Wysiwyg.astro";
 import FaqsItem from "./FaqsItem.astro";
 import "./faqs.scss";
 
-const { faqs } = Astro.props.data;
+const { faqs, title } = Astro.props.data;
 
 // 1️⃣ Server-safe function to strip HTML
 const stripHtml = (html) => html.replace(/<[^>]+>/g, "").trim();
@@ -32,6 +32,9 @@ const jsonLd = JSON.stringify(faqSchema, null, 2);
 
 <div class="faqs-section">
   <Wrapper classes="faqs-section-wrapper">
+    <div class="faqs-section-title">
+      <h2>{title}</h2>
+    </div>
     {
       faqs.map((faq) => {
         return <FaqsItem question={faq.question} answer={faq.answer} />;
