@@ -23,6 +23,12 @@ export const Main_Content_Query = `
     }
 `;
 
+export const Video_Embed_Query = `
+     videoEmbed: videoEmbedComponent {
+        videoEmbed
+    }
+`;
+
 export const Curved_Image_Query = `
      curvedImage: curvedImageComponent {
         content

@@ -1,0 +1,15 @@
+---
+import Wrapper from "../../common/shared/Wrapper.astro";
+import Wysiwyg from "../../common/shared/Wysiwyg.astro";
+import "./videoEmbed.scss";
+
+const { videoEmbed } = Astro.props.data;
+---
+
+<div class="video-embed">
+  <Wrapper classes="video-embed-wrapper">
+    <Wysiwyg>
+      <div class="video-embed-container" set:html={videoEmbed} />
+    </Wysiwyg>
+  </Wrapper>
+</div>
