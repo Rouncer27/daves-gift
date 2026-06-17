@@ -5,11 +5,11 @@ import "./advocacyIntro.scss";
 const { title, content } = Astro.props.data;
 ---
 
-<div>
+<div class="advocacy-intro">
   <Wrapper>
-    <div>
+    <div class="advocacy-intro-title">
       <h2>{title}</h2>
     </div>
-    <div set:html={content} />
+    <div class="advocacy-intro-content" set:html={content} />
   </Wrapper>
 </div>
