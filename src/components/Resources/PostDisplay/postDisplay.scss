@@ -2,7 +2,7 @@
 @use "../../../styles/global/headlines";
 @use "../../../styles/global/paragraphs";
 
-.post-display {
+.resources-post-display {
   &-post {
     display: flex;
     flex-wrap: wrap;
@@ -12,8 +12,12 @@
 
     &-image {
       position: relative;
-      width: calc(30%);
+      width: calc(100%);
       min-height: 37.5rem;
+
+      @media (min-width: 768px) {
+        width: calc(30%);
+      }
 
       &-container {
         position: absolute;
@@ -37,11 +41,15 @@
 
     &-intro {
       position: relative;
-      width: calc(70% - 2rem);
-      margin-left: 2rem;
+      width: calc(100%);
       padding: 4rem;
       padding-bottom: 6rem;
       background-color: #f2eddf;
+
+      @media (min-width: 768px) {
+        width: calc(70% - 2rem);
+        margin-left: 2rem;
+      }
 
       &-title {
         h2 {
