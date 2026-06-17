@@ -2,7 +2,7 @@
 @use "../../../styles/global/headlines";
 @use "../../../styles/global/paragraphs";
 
-.help-hero {
+.get-help-hero {
   position: relative;
   min-height: 75rem;
   overflow: hidden;
@@ -67,11 +67,19 @@
   &-content {
     position: absolute;
     top: 50%;
-    left: 5%;
+    left: 50%;
     width: 100%;
-    max-width: 85rem;
-    transform: translate(0%, -50%);
+    max-width: 35rem;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
     z-index: 25;
+
+    @media (min-width: 768px) {
+      left: 5%;
+      max-width: 85rem;
+      margin: 0;
+      transform: translate(0%, -50%);
+    }
 
     h1 {
       @extend .hl-two;
@@ -84,22 +92,6 @@
       color: $whiteColor;
     }
   }
-
-  //   &-fade {
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     right: 0;
-  //     height: 16rem;
-  //     background-image: linear-gradient(
-  //       to bottom,
-  //       $primaryColor,
-  //       $primaryColor 50%,
-  //       rgba(96, 128, 88, 0)
-  //     );
-  //     opacity: 0.8;
-  //     z-index: 10;
-  //   }
 
   &-color {
     position: absolute;
