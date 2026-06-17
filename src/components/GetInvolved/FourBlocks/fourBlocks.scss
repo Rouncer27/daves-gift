@@ -16,11 +16,15 @@
     background-color: $secondaryColor;
 
     &-content {
-      width: calc(50%);
+      width: calc(100%);
       max-width: 60rem;
       margin-left: auto;
       margin-right: 0;
       padding: 5rem;
+
+      @media (min-width: 768px) {
+        width: calc(50%);
+      }
 
       h2 {
         @extend .hl-four;
@@ -35,7 +39,11 @@
     }
 
     &-image {
-      width: calc(50%);
+      width: calc(100%);
+
+      @media (min-width: 768px) {
+        width: calc(50%);
+      }
     }
   }
 
@@ -49,11 +57,15 @@
     background-color: $tertiaryColor;
 
     &-content {
-      width: calc(50%);
+      width: calc(100%);
       max-width: 60rem;
       margin-left: 0;
       margin-right: auto;
       padding: 5rem;
+
+      @media (min-width: 768px) {
+        width: calc(50%);
+      }
 
       h2 {
         @extend .hl-four;
@@ -68,7 +80,10 @@
     }
 
     &-image {
-      width: calc(50%);
+      width: calc(100%);
+      @media (min-width: 768px) {
+        width: calc(50%);
+      }
     }
   }
 }

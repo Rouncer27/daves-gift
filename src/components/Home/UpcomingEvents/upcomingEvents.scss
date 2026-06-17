@@ -58,9 +58,13 @@
   &-image {
     position: relative;
     width: calc(100%);
+    margin-top: 5rem;
+    min-height: 45rem;
 
     @media (min-width: 768px) {
       width: calc(40%);
+      margin-top: 0;
+      min-height: 40rem;
     }
 
     &-mask {

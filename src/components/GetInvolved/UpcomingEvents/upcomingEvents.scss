@@ -3,11 +3,23 @@
 @use "../../../styles/global/paragraphs";
 
 .upcoming-events {
-  padding: 7.5rem 0 0;
+  padding: 0rem 0 5rem;
   background-color: #f2eddf;
 
+  @media (min-width: 768px) {
+    padding: 7.5rem 0 5rem;
+  }
+
+  &-wrapper {
+    position: relative;
+  }
+
   &-content {
-    width: calc(60%);
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(60%);
+    }
 
     &-inner {
       max-width: 52rem;
@@ -49,7 +61,15 @@
 
   &-image {
     position: relative;
-    width: calc(40%);
+    width: calc(100%);
+    margin-top: 5rem;
+    min-height: 45rem;
+
+    @media (min-width: 768px) {
+      width: calc(40%);
+      margin-top: 0;
+      min-height: 40rem;
+    }
 
     &-mask {
       position: absolute;
