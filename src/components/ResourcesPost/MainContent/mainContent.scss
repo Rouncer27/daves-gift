@@ -1,0 +1,22 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+.article-main {
+  &-title {
+    width: 100%;
+
+    h1 {
+      @extend .hl-two;
+      color: $shadowColor;
+      font-weight: 500;
+    }
+  }
+
+  &-content {
+    width: 100%;
+
+    p {
+      @extend .p-two;
+    }
+  }
+}

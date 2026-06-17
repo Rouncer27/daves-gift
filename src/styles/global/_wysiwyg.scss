@@ -18,7 +18,7 @@
   }
 
   p {
-    @extend .p-one;
+    @extend .p-two;
 
     em {
       font-style: italic;
@@ -26,7 +26,7 @@
   }
 
   a {
-    @extend .p-one;
+    @extend .p-two;
     transition: all 0.3s;
     color: $primaryColor;
     font-weight: bold;
@@ -49,17 +49,22 @@
     @extend .hl-three;
   }
 
-  h4,
-  h5,
-  h6 {
+  h4 {
     @extend .hl-four;
+  }
+  h5 {
+    @extend .hl-five;
+  }
+
+  h6 {
+    @extend .p-one;
   }
 
   ul {
     margin-bottom: 2.5rem;
 
     li {
-      @extend .p-one;
+      @extend .p-two;
       color: $blackColor;
       position: relative;
       margin-bottom: 0.5em;
@@ -81,7 +86,7 @@
     padding-left: 1.25em;
 
     li {
-      @extend .p-one;
+      @extend .p-two;
       line-height: 1;
       color: $blackColor;
       position: relative;
