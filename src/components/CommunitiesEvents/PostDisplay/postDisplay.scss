@@ -40,22 +40,49 @@
     }
 
     &-intro {
+      position: relative;
       width: calc(100%);
-      padding: 2rem;
+      padding: 4rem;
+      padding-bottom: 6rem;
       background-color: #f2eddf;
 
       @media (min-width: 768px) {
         width: calc(70% - 2rem);
         margin-left: 2rem;
       }
+
+      &-title {
+        h2 {
+          @extend .hl-four;
+        }
+      }
+
+      &-excerpt {
+        p {
+          @extend .p-two;
+        }
+      }
+
+      &-link {
+        position: absolute;
+        bottom: 2rem;
+        left: 4rem;
+
+        a {
+          @extend .p-two;
+          text-transform: uppercase;
+        }
+      }
     }
 
     &.post-reversed {
       flex-direction: row-reverse;
 
-      .post-display-post-intro {
-        margin-right: 2rem;
-        margin-left: 0;
+      .community-post-display-post-intro {
+        @media (min-width: 768px) {
+          margin-right: 2rem;
+          margin-left: 0;
+        }
       }
     }
   }
