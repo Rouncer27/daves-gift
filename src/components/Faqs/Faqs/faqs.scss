@@ -27,6 +27,13 @@
       background-color: #f2eddf;
       cursor: pointer;
 
+      &-toggle-icon {
+        display: inline-block;
+        width: 3rem;
+        font-size: 3rem;
+        font-weight: 900;
+      }
+
       p {
         @extend .p-one;
         display: flex;
