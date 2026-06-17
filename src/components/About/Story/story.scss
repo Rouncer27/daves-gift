@@ -9,7 +9,11 @@
 
   &-image {
     position: relative;
-    width: calc(30%);
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(30%);
+    }
 
     &-heart {
       position: absolute;
@@ -21,8 +25,12 @@
   }
 
   &-content {
-    width: calc(70% - 4rem);
-    margin-left: 4rem;
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(70% - 4rem);
+      margin-left: 4rem;
+    }
 
     &-title {
       h2 {
