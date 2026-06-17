@@ -12,8 +12,13 @@
 
   &-image {
     position: relative;
-    width: calc(50% - 0.75rem);
-    margin-right: 0.75rem;
+    width: calc(100%);
+    min-height: 35rem;
+
+    @media (min-width: 768px) {
+      width: calc(50% - 0.75rem);
+      margin-right: 0.75rem;
+    }
 
     &-container {
       position: absolute;
@@ -40,10 +45,15 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: calc(50% - 0.75rem);
-    margin-left: 0.75rem;
-    padding: 7.5rem;
+    width: calc(100%);
+    padding: 2rem;
     background-color: $secondaryColor;
+
+    @media (min-width: 768px) {
+      width: calc(50% - 0.75rem);
+      margin-left: 0.75rem;
+      padding: 7.5rem;
+    }
 
     &-inner {
       p {

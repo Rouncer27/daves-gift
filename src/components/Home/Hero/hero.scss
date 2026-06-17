@@ -2,7 +2,7 @@
 @use "../../../styles/global/headlines";
 @use "../../../styles/global/paragraphs";
 
-.hero {
+.home-hero {
   position: relative;
   min-height: 75rem;
   overflow: hidden;
@@ -69,10 +69,14 @@
     top: 50%;
     left: 50%;
     width: 100%;
-    max-width: 85rem;
+    max-width: 30rem;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 25;
+
+    @media (min-width: 768px) {
+      max-width: 85rem;
+    }
 
     h1 {
       @extend .hl-one;

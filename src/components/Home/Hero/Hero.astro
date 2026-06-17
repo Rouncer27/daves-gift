@@ -10,8 +10,8 @@ const heroAlt = image?.node?.altText || "";
 import heroMountain from "../../../assets/hero-path.png";
 ---
 
-<div class="hero">
-  <div class="hero-background">
+<div class="home-hero">
+  <div class="home-hero-background">
     <Image
       src={heroImageSrc}
       alt={heroAlt}
@@ -20,17 +20,17 @@ import heroMountain from "../../../assets/hero-path.png";
       sizes="100vw"
       loading="eager"
       inferSize={true}
-      class="hero-background-img"
+      class="home-hero-background-img"
     />
   </div>
-  <div class="hero-graphic">
+  <div class="home-hero-graphic">
     <img src={heroMountain.src} alt={"Green path"} />
   </div>
-  <div class="hero-title">
+  <div class="home-hero-title">
     <h1 set:html={title} />
   </div>
-  <div class="hero-color"></div>
-  <div class="hero-fade"></div>
+  <div class="home-hero-color"></div>
+  <div class="home-hero-fade"></div>
 </div>
 
 <script>

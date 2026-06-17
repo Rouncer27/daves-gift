@@ -11,7 +11,11 @@
   }
 
   &-content {
-    width: calc(60%);
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(60%);
+    }
 
     &-inner {
       max-width: 52rem;
@@ -53,7 +57,11 @@
 
   &-image {
     position: relative;
-    width: calc(40%);
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(40%);
+    }
 
     &-mask {
       position: absolute;
