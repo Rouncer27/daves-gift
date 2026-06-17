@@ -10,8 +10,8 @@ const heroAlt = image?.node?.altText || "";
 import heroMountain from "../../../assets/hero-path-white.png";
 ---
 
-<div class="help-hero">
-  <div class="help-hero-background">
+<div class="community-hero">
+  <div class="community-hero-background">
     <Image
       src={heroImageSrc}
       alt={heroAlt}
@@ -20,20 +20,20 @@ import heroMountain from "../../../assets/hero-path-white.png";
       sizes="100vw"
       loading="eager"
       inferSize={true}
-      class="help-hero-background-img"
+      class="community-hero-background-img"
     />
   </div>
-  <div class="help-hero-graphic">
+  <div class="community-hero-graphic">
     <img src={heroMountain.src} alt={"Green path"} />
   </div>
-  <div class="help-hero-content">
+  <div class="community-hero-content">
     <div>
       <h1 set:html={title} />
     </div>
     <div set:html={content} />
   </div>
-  <div class="help-hero-color"></div>
-  <div class="help-hero-fade"></div>
+  <div class="community-hero-color"></div>
+  <div class="community-hero-fade"></div>
 
   <script>
     // @ts-nocheck

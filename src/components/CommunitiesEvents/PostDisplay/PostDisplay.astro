@@ -8,18 +8,18 @@ import "./postDisplay.scss";
 const { posts } = Astro.props;
 ---
 
-<div class="post-display">
-  <Wrapper classes="post-display-wrapper">
+<div class="community-post-display">
+  <Wrapper classes="community-post-display-wrapper">
     {
       posts.map((post, index) => {
         const imageSrc = post.node.eventAcf.featuredImage?.node?.sourceUrl;
         const imageAlt = post.node.eventAcf.featuredImage?.node?.altText || "";
         return (
           <div
-            class={`post-display-post${index % 2 !== 0 ? " post-reversed" : ""}`}
+            class={`community-post-display-post${index % 2 !== 0 ? " post-reversed" : ""}`}
           >
-            <div class="post-display-post-image">
-              <div class="post-display-post-image-container">
+            <div class="community-post-display-post-image">
+              <div class="community-post-display-post-image-container">
                 <Image
                   src={imageSrc}
                   alt={imageAlt}
@@ -31,15 +31,15 @@ const { posts } = Astro.props;
                 />
               </div>
             </div>
-            <div class="post-display-post-intro">
-              <div class="post-display-post-intro-title">
+            <div class="community-post-display-post-intro">
+              <div class="community-post-display-post-intro-title">
                 <h2>{post.node.title}</h2>
               </div>
               <div
-                class="post-display-post-intro-excerpt"
+                class="community-post-display-post-intro-excerpt"
                 set:html={post.node.eventAcf.excerpt}
               />
-              <div class="post-display-post-intro-link">
+              <div class="community-post-display-post-intro-link">
                 <a href={`/community-events/${post.node.slug}`}>Read</a>
               </div>
             </div>
