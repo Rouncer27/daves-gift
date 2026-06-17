@@ -11,13 +11,44 @@
     margin: 2rem auto 0;
 
     &-image {
+      position: relative;
       width: calc(30%);
+
+      &-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          z-index: 1;
+        }
+      }
     }
 
     &-intro {
       width: calc(70% - 2rem);
       margin-left: 2rem;
       padding: 4rem;
+
+      h2 {
+        @extend .hl-four;
+        color: $shadowColor;
+      }
+
+      &-excerpt {
+        p {
+          @extend .p-two;
+        }
+      }
     }
   }
 }

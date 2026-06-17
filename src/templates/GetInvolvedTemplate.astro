@@ -11,6 +11,7 @@ import {
   Upcoming_Events_Query,
   Four_Blocks_Query,
   All_posts_Query,
+  Posts_Display_Query,
 } from "../data/getInvolved/queries";
 
 // 2️⃣ Get the actual page data by slug
@@ -33,6 +34,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                       ${Hero_Query}
                       ${Upcoming_Events_Query}
                       ${Four_Blocks_Query}
+                      ${Posts_Display_Query}
                   }
               }
           }
@@ -53,6 +55,11 @@ const {
     },
   },
 } = await response.json();
+
+const postsDisplay = [
+  ...getInvolvedTemplate.postsDisplay.postOne.nodes,
+  ...getInvolvedTemplate.postsDisplay.postTwo.nodes,
+];
 ---
 
 <Layout
@@ -64,5 +71,5 @@ const {
   <Hero data={getInvolvedTemplate.hero} />
   <UpcomingEvents data={getInvolvedTemplate.upcomingEvents} />
   <FourBlocks data={getInvolvedTemplate.fourBlocks} />
-  <PostDisplay posts={posts.edges} />
+  <PostDisplay posts={postsDisplay} />
 </Layout>

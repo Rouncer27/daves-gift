@@ -113,3 +113,46 @@ export const All_posts_Query = `
     }
 
 `;
+
+export const Posts_Display_Query = `
+    postsDisplay: postsDisplayComponent {
+        postOne {
+              nodes {
+                ... on Post {
+                    id
+                    title
+                    slug
+                    postType {
+                        excerpt
+                        featuredImage {
+                            node {
+                                altText
+                                sourceUrl
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        postTwo {
+              nodes {
+                ... on Post {
+                    id
+                    title
+                    slug
+                    postType {
+                        excerpt
+                        featuredImage {
+                            node {
+                                altText
+                                sourceUrl
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+`;

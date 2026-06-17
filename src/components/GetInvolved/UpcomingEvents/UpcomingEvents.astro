@@ -11,6 +11,7 @@ const imageAlt =
   event.edges[0].node.eventAcf.featuredImage?.node?.altText || "";
 
 import mask from "../../../assets/half-circle-cut-beige.png";
+import leaf from "../../../assets/leaf-icon-green.png";
 ---
 
 <div class="upcoming-events">
@@ -42,6 +43,7 @@ import mask from "../../../assets/half-circle-cut-beige.png";
       <div class="upcoming-events-image-mask">
         <img src={mask.src} alt={"Beige mask"} />
       </div>
+
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -52,6 +54,9 @@ import mask from "../../../assets/half-circle-cut-beige.png";
         inferSize={true}
         class=""
       />
+      <div class="upcoming-events-image-leaf">
+        <img src={leaf.src} alt={"Green Leaf"} />
+      </div>
     </div>
   </Wrapper>
 </div>
