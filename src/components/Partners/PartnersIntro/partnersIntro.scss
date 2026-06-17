@@ -1,0 +1,23 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.partners-intro {
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-three;
+      color: $primaryColor;
+      font-weight: 500;
+    }
+  }
+
+  &-content {
+    width: 100%;
+
+    p {
+      @extend .p-two;
+    }
+  }
+}
