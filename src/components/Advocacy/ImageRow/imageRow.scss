@@ -40,20 +40,26 @@
 
   .image-one {
     width: calc(100%);
+    margin-bottom: 2.5rem;
     @media (min-width: 768px) {
       width: calc(33.3333%);
+      margin-bottom: 0;
     }
   }
 
   .image-two {
     width: calc(100%);
+    margin-bottom: 2.5rem;
+
     @media (min-width: 768px) {
       width: calc(33.3333%);
+      margin-bottom: 0;
     }
   }
 
   .image-three {
     width: calc(100%);
+
     @media (min-width: 768px) {
       width: calc(33.3333%);
     }

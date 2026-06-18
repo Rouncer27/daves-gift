@@ -2,7 +2,7 @@
 @use "../../../styles/global/headlines";
 @use "../../../styles/global/paragraphs";
 
-.help-hero {
+.advocacy-hero {
   position: relative;
   min-height: 75rem;
   overflow: hidden;
@@ -67,11 +67,23 @@
   &-content {
     position: absolute;
     top: 50%;
-    left: 5%;
+    left: 50%;
     width: 100%;
-    max-width: 85rem;
-    transform: translate(0%, -50%);
+    max-width: 35rem;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
     z-index: 25;
+
+    @media (min-width: 768px) {
+      left: 5%;
+      max-width: 65rem;
+      margin: 0;
+      transform: translate(0%, -50%);
+    }
+
+    @media (min-width: 1025px) {
+      max-width: 85rem;
+    }
 
     h1 {
       @extend .hl-two;
