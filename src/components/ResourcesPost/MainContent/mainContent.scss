@@ -19,4 +19,17 @@
       @extend .p-two;
     }
   }
+
+  &-navigation {
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    border-top: 0.2rem solid $shadowColor;
+    text-align: center;
+
+    a {
+      @extend .p-two;
+      text-transform: uppercase;
+    }
+  }
 }
