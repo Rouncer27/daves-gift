@@ -12,10 +12,10 @@
     position: relative;
     width: calc(100%);
     min-height: 50rem;
-    margin-left: 0.75rem;
 
     @media (min-width: 768px) {
       width: calc(50% - 0.75rem);
+      margin-left: 0.75rem;
     }
 
     &-container {
@@ -48,6 +48,7 @@
 
     @media (min-width: 768px) {
       width: calc(50% - 0.75rem);
+      margin-right: 0.75rem;
     }
 
     &-top {
