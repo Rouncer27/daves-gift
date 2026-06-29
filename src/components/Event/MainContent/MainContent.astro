@@ -6,15 +6,15 @@ import "./mainContent.scss";
 const { title, content } = Astro.props;
 ---
 
-<div>
+<div class="event-article-main">
   <Wrapper>
     <Wysiwyg>
-      <div>
+      <div class="event-article-main-title">
         <h1>{title}</h1>
       </div>
-      <div set:html={content} />
+      <div class="event-article-main-content" set:html={content} />
     </Wysiwyg>
-    <div>
+    <div class="event-article-main-navigation">
       <a href="/get-involved/community-event">Back to All Community Events</a>
     </div>
   </Wrapper>

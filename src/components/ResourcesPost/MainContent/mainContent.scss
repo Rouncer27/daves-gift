@@ -18,6 +18,23 @@
     p {
       @extend .p-two;
     }
+
+    .size-thumbnail {
+      max-width: 15rem;
+      max-height: 15rem;
+    }
+
+    .size-medium {
+      max-width: 25rem;
+    }
+
+    .size-large {
+      max-width: 85rem;
+    }
+
+    .size-full {
+      max-width: 100%;
+    }
   }
 
   &-navigation {
