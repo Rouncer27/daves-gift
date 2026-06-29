@@ -7,7 +7,13 @@
   background-color: #f2eddf;
 
   &-content {
-    width: calc(70%);
+    width: calc(100%);
+    margin-bottom: 5rem;
+
+    @media (min-width: 768px) {
+      width: calc(70%);
+      margin-bottom: 0;
+    }
 
     &-inner {
       //max-width: 52rem;
@@ -50,7 +56,11 @@
 
   &-image {
     position: relative;
-    width: calc(30%);
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(30%);
+    }
 
     &-mask {
       position: absolute;

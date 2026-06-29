@@ -52,6 +52,11 @@
     overflow: hidden;
     z-index: 1000;
 
+    @media (min-width: 1600px) {
+      width: calc(136.6rem * 1.4);
+      height: calc(21rem * 1.4);
+    }
+
     img {
       position: absolute;
       top: 0;

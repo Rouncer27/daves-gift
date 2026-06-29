@@ -27,10 +27,16 @@
 
   &-block {
     width: calc(100%);
+    margin: 1rem 0;
     padding: 3rem;
     border: 0.2rem solid $blackColor;
 
     @media (min-width: 768px) {
+      width: calc((100% / 2) - 1rem);
+      margin: 1rem 0.5rem;
+    }
+
+    @media (min-width: 1025px) {
       width: calc((100% / 3) - 1rem);
       margin: 1rem 0.5rem;
     }
