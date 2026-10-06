@@ -1,0 +1,193 @@
+---
+// @ts-ignore
+// @ts-nocheck
+
+import { Image } from "astro:assets";
+import Wrapper from "../../common/shared/Wrapper.astro";
+import "./practitionersNew.scss";
+
+const { title, practitioners } = Astro.props.data;
+
+const practitionerModalData = practitioners.map((pract) => ({
+  name: pract.name,
+  bio: pract.bio,
+  image: pract.image?.node?.sourceUrl || "",
+  imageAlt: pract.image?.node?.altText || "",
+}));
+---
+
+<div class="practitioners">
+  <Wrapper classes="practitioners-wrapper">
+    <div class="practitioners-title">
+      <h2>{title}</h2>
+    </div>
+
+    <div class="practitioners-headshots">
+      {
+        practitioners.map((pract, index) => {
+          const imageSrc = pract.image?.node?.sourceUrl;
+          const imageAlt = pract.image?.node?.altText || "";
+
+          return (
+            <div class="practitioners-headshot">
+              <div>
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                />
+              </div>
+
+              <div>
+                <h3>{pract.name}</h3>
+
+                <p>
+                  <button
+                    class="practitioners-headshot-button"
+                    data-index={index}
+                    type="button"
+                  >
+                    click to Read
+                  </button>
+                </p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </Wrapper>
+</div>
+
+<!-- BIO MODAL -->
+
+<div class="practitioners-modal" aria-hidden="true">
+  <div class="practitioners-modal-overlay"></div>
+
+  <div
+    class="practitioners-modal-container"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="practitioners-modal-name"
+  >
+    <button class="practitioners-modal-close" type="button" aria-label="Close">
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="practitioners-modal-content">
+      <div class="practitioners-modal-image">
+        <div>
+          <img class="practitioners-modal-image-img" src="" alt="" />
+        </div>
+
+        <div class="practitioners-modal-image-title">
+          <h3 id="practitioners-modal-name"></h3>
+
+          <a class="practitioners-modal-book" href="#">
+            Book With <span></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="practitioners-modal-bio">
+        <div class="practitioners-modal-bio-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ practitionerModalData }}>
+  // @ts-ignore
+  // @ts-nocheck
+
+  const buttons = document.querySelectorAll(".practitioners-headshot-button");
+  const modal = document.querySelector(".practitioners-modal");
+  const overlay = document.querySelector(".practitioners-modal-overlay");
+  const closeButton = document.querySelector(".practitioners-modal-close");
+  const modalImage = document.querySelector(".practitioners-modal-image-img");
+  const modalName = document.querySelector("#practitioners-modal-name");
+  const modalBookName = document.querySelector(
+    ".practitioners-modal-book span",
+  );
+  const modalBio = document.querySelector(".practitioners-modal-bio-content");
+
+  /*
+   * Open practitioner modal
+   */
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = parseInt(button.dataset.index, 10);
+
+      const practitioner = practitionerModalData[index];
+
+      if (!practitioner) {
+        console.error("Practitioner not found:", index);
+
+        return;
+      }
+
+      /*
+       * Get image data
+       */
+
+      const imageSrc = practitioner.image;
+
+      const imageAlt = practitioner.imageAlt;
+
+      /*
+       * Populate modal
+       */
+
+      modalImage.src = imageSrc;
+      modalImage.alt = imageAlt;
+
+      modalName.textContent = practitioner.name || "";
+
+      modalBookName.textContent = practitioner.name || "";
+
+      modalBio.innerHTML = practitioner.bio || "";
+
+      /*
+       * Open modal
+       */
+
+      modal.classList.add("active");
+
+      modal.setAttribute("aria-hidden", "false");
+
+      document.body.classList.add("modal-open");
+    });
+  });
+
+  /*
+   * Close modal
+   */
+
+  const closeModal = () => {
+    modal.classList.remove("active");
+
+    modal.setAttribute("aria-hidden", "true");
+
+    document.body.classList.remove("modal-open");
+  };
+
+  closeButton.addEventListener("click", closeModal);
+
+  overlay.addEventListener("click", closeModal);
+
+  /*
+   * Escape key
+   */
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("active")) {
+      closeModal();
+    }
+  });
+</script>

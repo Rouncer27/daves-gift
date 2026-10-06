@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/GetHelp/Hero/Hero.astro";
 import How from "../components/GetHelp/How/How.astro";
-import Practitioners from "../components/GetHelp/Practitioners/Practitioners.astro";
+import PractitionersNew from "../components/GetHelp/Practitioners/PractitionersNew.astro";
 import BoxSide from "../components/GetHelp/BoxSide/BoxSide.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
@@ -62,6 +62,6 @@ const {
 >
   <Hero data={helpTemplate.hero} />
   <How data={helpTemplate.how} />
-  <Practitioners data={helpTemplate.practitioners} />
+  <PractitionersNew data={helpTemplate.practitioners} />
   <BoxSide data={helpTemplate.boxSide} />
 </Layout>
