@@ -1,0 +1,5 @@
+https://www.davesgift.ca/ https://davesgift.ca/:splat 301!
+http://www.davesgift.ca/ https://davesgift.ca/:splat 301!
+http://davesgift.ca/ https://davesgift.ca/:splat 301!
+
+https://daves-gift.netlify.app/* https://davesgift.ca/:splat 301!

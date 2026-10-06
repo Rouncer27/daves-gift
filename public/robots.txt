@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://davesgift.ca/sitemap-index.xml
