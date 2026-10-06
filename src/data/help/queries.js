@@ -42,6 +42,7 @@ export const Practitioners_Query = `
         practitioners {
             name
             bio
+            link
             image {
                 node {
                     sourceUrl

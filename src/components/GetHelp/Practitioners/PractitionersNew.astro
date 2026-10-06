@@ -11,6 +11,7 @@ const { title, practitioners } = Astro.props.data;
 const practitionerModalData = practitioners.map((pract) => ({
   name: pract.name,
   bio: pract.bio,
+  link: pract.link,
   image: pract.image?.node?.sourceUrl || "",
   imageAlt: pract.image?.node?.altText || "",
 }));
@@ -88,7 +89,12 @@ const practitionerModalData = practitioners.map((pract) => ({
         <div class="practitioners-modal-image-title">
           <h3 id="practitioners-modal-name"></h3>
 
-          <a class="practitioners-modal-book" href="#">
+          <a
+            class="practitioners-modal-book"
+            target="_blank"
+            rel="noopener"
+            href="#"
+          >
             Book With <span></span>
           </a>
         </div>
@@ -111,6 +117,7 @@ const practitionerModalData = practitioners.map((pract) => ({
   const closeButton = document.querySelector(".practitioners-modal-close");
   const modalImage = document.querySelector(".practitioners-modal-image-img");
   const modalName = document.querySelector("#practitioners-modal-name");
+  const modalLink = document.querySelector(".practitioners-modal-book");
   const modalBookName = document.querySelector(
     ".practitioners-modal-book span",
   );
@@ -152,6 +159,7 @@ const practitionerModalData = practitioners.map((pract) => ({
       modalBookName.textContent = practitioner.name || "";
 
       modalBio.innerHTML = practitioner.bio || "";
+      modalLink.href = practitioner.link;
 
       /*
        * Open modal
