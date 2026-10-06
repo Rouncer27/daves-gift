@@ -13,7 +13,7 @@ export default defineConfig({
       devSourcemap: true, // ✅ Enables CSS/SCSS source maps for better debugging
     },
   },
-  site: "https://daves-gift.netlify.app/",
+  site: "https://davesgift.ca/",
   integrations: [react(), sitemap()],
   image: {
     domains: ["daves.swbdatabases3.ca/"],
