@@ -154,7 +154,7 @@ const ContactForm = () => {
           )}
           <ReCAPTCHA
             ref={recaptchaRef}
-            sitekey={`6Lcgb4ksAAAAADQGNBqcN4SLp-Wnta2ZaLmCc5bU`}
+            sitekey={`6LcSfuItAAAAAE3rG-DrUP5CY3GzH29hjKAk3c-z`}
             onChange={onChangeRecaptcha}
             onExpired={() => setIsCaptchaVerified(false)}
           />
